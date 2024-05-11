@@ -3,7 +3,7 @@ import path from 'path';
 import react from '@vitejs/plugin-react';
 
 // Define the port directly or use a default value
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // https://vitejs.dev/config/
 export default defineConfig({
