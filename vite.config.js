@@ -7,7 +7,8 @@ export default defineConfig({
   server:{
     proxy:{
       "/users":"http://localhost:3000/api/v1"
-    }
+    },
+    port:3000
   },
   plugins: [react()],
   resolve: {
