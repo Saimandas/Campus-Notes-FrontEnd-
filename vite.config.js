@@ -8,6 +8,7 @@ export default defineConfig({
     proxy: {
       "/users": "https://campusnotes-backend-1.onrender.com/api/v1"
     },
+    host: '0.0.0.0',
     port: 3000
   },
   plugins: [react()],
