@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 
 
 const ViewNotes = () => {
@@ -21,7 +21,7 @@ const ViewNotes = () => {
         <div className=" w-[80%]  bg-blue-500 mt-14 px-4 ">
        {notes.map((e)=>{
         console.log(e.notesName);
-        return  <ul className=" bg-white" key={e._id}>
+        return  <ul className=" bg-white" key={e._id} >
         <li ><div className="mt-10 h-10 rounded-md shadow-lg flex justify-around">
             <div className=" mr-9 w-[40%] pl-16 py-2">{e.notesName}</div>
             <div className=" py-1 flex w-[60%]  bg-red-50 pl-[30%]  justify-around">
