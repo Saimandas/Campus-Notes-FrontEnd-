@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import img from '@/components/image/431627966_798034799015242_4225306771030207433_n (2).webp'
+import img from '@/components/image/431627966_798034799015242_4225306771030207433_n (2).png'
 // Author details
 const author = {
   name: "Saiman Das",
