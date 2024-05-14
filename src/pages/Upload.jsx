@@ -40,24 +40,24 @@ const Upload = () => {
 
 
   return (
-    <div className=" w-screen h-screen bg-red-50 flex justify-center items-center bg-blue-600 to bg-violet-400">
-        <div className=" w-[80%] sm:w-2/4 sm:h-3/4 rounded-md  bg-white p-16 ">
+    <div className=" w-screen h-screen bg-red-50 flex justify-center items-center bg-white">
+        <div className=" w-[80%] sm:w-2/4 sm:h-3/4 rounded-lg  bg-white p-16 shadow-2xl ">
             <form className=" h-[60%] mt-20" onSubmit={upload}>
                 <label><h1 className=" text-black font-semibold text-lg">Notes Name:</h1></label>
-                <input type="text" value={NotesName} required={true} onChange={(e)=>{setNotesName(e.target.value)}} className=" w-60 sm:w-72 h-8 rounded-md outline-none text-base font-semibold p-4 bg-purple-100 mt-2"/> 
+                <input type="text" value={NotesName} required={true} onChange={(e)=>{setNotesName(e.target.value)}} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"/> 
 
                 <label><h1 className=" text-black font-semibold text-lg mt-4">Subject:</h1></label>
-                <select className=" mt-1" value={subject} required={true} onChange={(e)=>{setsubject(e.target.value)}}>
-                    <option value="DSA">DSA</option>
-                    <option value="Maths">Maths</option>
-                    <option value="Fundamentels">Fundamentels</option>
+                <select className=" mt-1 w-40 mt-2 rounded-md p-2 h-12 bg-blue-700 text-white font-semibold outline-blue-800" value={subject} required={true} onChange={(e)=>{setsubject(e.target.value)}}>
+                    <option value="DSA" className=" bg-gray-700 hover:bg-gray-600 ">DSA</option>
+                    <option value="Maths" className=" bg-gray-700 hover:bg-gray-600 ">Maths</option>
+                    <option value="Fundamentels" className=" bg-gray-700 hover:bg-gray-600 ">Fundamentels</option>
                 </select>
 
-                <label><h1 className=" text-black font-semibold text-lg mt-4">Depertment</h1></label>
-                <select className=" mt-1" value={depertment} required={true} onChange={(e)=>{setdepertment(e.target.value)}}>
-                    <option value="BCA">BCA</option>
-                    <option value="BA">BA</option>
-                    <option value="BSC">BSC</option>
+                <label><h1 className=" text-black font-semibold text-lg mt-4">Depertment:</h1></label>
+                <select className=" w-40 mt-2 rounded-md p-2 h-12 bg-red-700 text-white font-semibold outline-red-500" value={depertment} required={true} onChange={(e)=>{setdepertment(e.target.value)}}>
+                    <option value="BCA" className=" bg-gray-700 hover:bg-gray-600">BCA</option>
+                    <option value="BA" className=" bg-gray-700 hover:bg-gray-600">BA</option>
+                    <option value="BSC" className=" bg-gray-700 hover:bg-gray-600">BSC</option>
                 </select>
                 <label> <h1 className="text-black font-semibold text-lg mt-4">Select Image</h1></label>
                 <input type="file" name="notesImg" accept=".png,.jpg" capture required={true}  onChange={(e)=>{setNotesImg(e.target.files[0])}} />
@@ -70,4 +70,4 @@ const Upload = () => {
   )
 }
 
-export default Upload
+export default Upload 

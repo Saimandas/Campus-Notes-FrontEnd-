@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import img from '@/components/image/431627966_798034799015242_4225306771030207433_n (2).webp'
 // Author details
 const author = {
   name: "Saiman Das",
@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-sky-500 to-indigo-500">
       <div className='fixed top-2 right-2 h-8 w-8'></div>
-      <div className="relative flex items-center justify-center h-72 w-72 bg-green-500 rounded-full overflow-hidden">
-        <img src="https://scontent.fgau3-3.fna.fbcdn.net/v/t39.30808-6/431627966_798034799015242_4225306771030207433_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_ohc=alyuUq22TvMQ7kNvgHOgwxB&_nc_ht=scontent.fgau3-3.fna&oh=00_AfAquoGoKp3bJtNbLSO5hbGdq9gx6D-PrCUZv8bmpGuCpQ&oe=663EA3ED" alt="" className='w-full h-full' />
+      <div className="relative flex items-center justify-center h-72 w-72 bg-green-500 rounded-full overflow-hidden ">
+        <img src={img} alt="" className='w-full h-full  ' />
       </div>
       <div className="flex justify-center mt-8 w-full">
         <div className="grid grid-cols-2 gap-5">

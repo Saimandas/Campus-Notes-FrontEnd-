@@ -1,16 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 
+const MathsNotes = () => {
 
-const ViewNotes = () => {
-   
-
+    
     const [notes, setnotes] = useState([])
 
     useEffect(()=>{
         async function get(){
-            const response= await axios.get('/users/notes')
+            const response= await axios.get('/users/Sub-notes/Maths')
             setnotes(response.data.notes)
         }
         get()
@@ -32,6 +31,7 @@ const ViewNotes = () => {
         </div>
     </div>
   )
+  
 }
 
-export default ViewNotes
+export default MathsNotes

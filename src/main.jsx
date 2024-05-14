@@ -11,6 +11,8 @@ import Upload from './pages/Upload.jsx'
 import NotesForverification from './pages/notesForverification.jsx'
 import ViewNotes from './pages/viewNotes.jsx'
 import Image from './pages/image.jsx'
+import SelectDepertment from './pages/SelectDepertment.jsx'
+
 
 const router= createBrowserRouter(
               createRoutesFromElements(
@@ -20,7 +22,7 @@ const router= createBrowserRouter(
                   <Route path='register' element={<SignUpPage/>}/>
                   <Route path='upload' element={<Upload/>}/>
                   <Route path='forAdmin' element={<NotesForverification/>}/>
-                  <Route path='viewNotes' element={<ViewNotes/>} />
+                  <Route path='viewNotes' element={<SelectDepertment/>} />
                   <Route path='imgView/:img' element={<Image/>}/>
                   </Route>
                 

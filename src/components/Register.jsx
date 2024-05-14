@@ -97,7 +97,7 @@ const Register = () => {
                   }
                   
                   <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Don’t have an account yet?<Link to={'/register'}><h1 href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</h1></Link>
+                      already have an account yet?<Link to={'/login'}><h1 href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign In</h1></Link>
                   </p>
               </form>
           </div>
