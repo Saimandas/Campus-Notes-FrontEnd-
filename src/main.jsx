@@ -9,7 +9,6 @@ import LoginPage from './pages/LoginPage.jsx'
 import SignUpPage from './pages/SignUpPage.jsx'
 import Upload from './pages/Upload.jsx'
 import NotesForverification from './pages/notesForverification.jsx'
-import ViewNotes from './pages/viewNotes.jsx'
 import Image from './pages/image.jsx'
 import SelectDepertment from './pages/SelectDepertment.jsx'
 
