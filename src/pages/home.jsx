@@ -16,7 +16,7 @@ const author = {
 const Home = () => {
   const navigate= useNavigate()
   const dispatch = useDispatch()
-  const [isLoggedin, setisLoggedin] = useState(null)
+  const [isLoggedin, setisLoggedin] = useState(false)
   async function getCurrentUser(){
     try {
       const response = await axios.get('/users/getCurrentUser');
@@ -24,7 +24,6 @@ const Home = () => {
          dispatch(userLogin(response.data.user))
       }
     } catch (error) {
-      setisLoggedin(false)
       console.log(error);
     }
   }
