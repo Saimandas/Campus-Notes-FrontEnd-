@@ -12,7 +12,7 @@ const authSlice = createSlice({
             state.status=true,
             state.userData= action.payload
         },
-        logout:(state)=>{
+        userlogout:(state)=>{
             state.status= false,
             state.userData=null
         }
@@ -20,5 +20,5 @@ const authSlice = createSlice({
     }
 })
 
-export const {userLogin,logout}= authSlice.actions
+export const {userLogin,userlogout}= authSlice.actions
 export default authSlice.reducer

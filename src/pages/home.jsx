@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import img from '@/components/image/431627966_798034799015242_4225306771030207433_n (2).png'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {  LoaderPinwheelIcon } from "lucide-react";
+import { userLogin, userlogout } from "@/redux/authSlice";
 
 // Author details
 const author = {
@@ -14,15 +15,31 @@ const author = {
 };
 const Home = () => {
   const navigate= useNavigate()
-  const [isLoggedin, setisLoggedin] = useState(false)
+  const dispatch = useDispatch()
+  const [isLoggedin, setisLoggedin] = useState(null)
+  async function getCurrentUser(){
+    try {
+      const response = await axios.get('/users/getCurrentUser');
+      if (response.data.message==="user get succcesfully"){
+         dispatch(userLogin(response.data.user))
+      }
+    } catch (error) {
+      setisLoggedin(false)
+      console.log(error);
+    }
+  }
+  getCurrentUser()
+
    const status= useSelector((state)=>{return state.auth.status})
+ 
    useEffect(()=>{
     setisLoggedin(status)
    },[status])
+   console.log(status);
   const [isSubmitting, setisSubmitting] = useState(false)
    const logout= async()=>{
     try {
-     const result= confirm("Are you sure to Log-Out ")
+     const result= confirm("Are you sure to Log-Out")
      if (result) {
       setisSubmitting(true)
       const response= await axios.post('/users/logout');
@@ -30,6 +47,7 @@ const Home = () => {
         alert("user succesfully logout")
         setisLoggedin(false);
         setisSubmitting(false);
+        dispatch(userlogout())
         navigate("/") 
      }
      
