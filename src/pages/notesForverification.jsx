@@ -1,11 +1,12 @@
 import axios from "axios"
+import { LucideLoaderCircle } from "lucide-react"
 import { useEffect, useState } from "react"
 
 
 
 const NotesForverification = () => {
 
-    const [notes, setnotes] = useState([{}])
+    const [notes, setnotes] = useState([])
     const [error, seterror] = useState("")
     const [isSubmitting, setisSubmitting] = useState(false)
     //const userData= useSelector((e)=>{return e.auth.userData})
@@ -44,6 +45,7 @@ const NotesForverification = () => {
 
    const reject = async (id)=>{
     try {
+      setisSubmitting(true)
       const response = await axios.post('/users/verify-notes',{
         notes_id:id,
         verifyFlag:false
@@ -53,7 +55,7 @@ const NotesForverification = () => {
         return  e._id !== id
       })
       setnotes(arr)
-      setisSubmitting(true)
+     
     } catch (error) {
       console.log(error);
       setisSubmitting(false)
@@ -63,23 +65,30 @@ const NotesForverification = () => {
    }
 
    console.log(notes);
-  return notes.length<2 ?  <h1>No notes are avilable</h1> :  (
-    <div className=" w-full h-full flex justify-center pt-10 ">
-        <div className=" w-[80%]  bg-blue-500 mt-14 px-4 ">
-       {notes.map((e)=>{
-        console.log(e.notesName);
-        return  <ul className=" bg-white" key={e._id}>
-        <li ><div className="mt-10 h-10 rounded-md shadow-lg flex justify-around  ">
-            <div className=" mr-9 w-[40%] pl-16 py-2 text-black font-semibold">{e.notesName}</div>
-            <div><h1>{e.subject}</h1></div>
-            <div><h1>{e.depertment}</h1></div>
-            <div className=" py-1 flex w-[60%]  bg-red-50 pl-[30%]  justify-around"> <a href={e.imageUrl}><button className=" bg-yellow-400 w-14 shadow-md  active:scale-50 ">view</button></a>
-            <button className=" bg-green-400 w-20  shadow-md rounded  active:scale-50 " disabled={isSubmitting} onClick={()=>{verify(e._id)}}>{isSubmitting?<h1>Please wait...</h1>:<h1>Approve</h1>}</button> 
-            <button className=" bg-red-400 w-14 shadow-md rounded active:scale-50" disabled={isSubmitting} onClick={()=>{reject(e._id)}}>{isSubmitting?<h1>Please wait...</h1>:<h1>Approve</h1>}</button></div></div></li>
-    </ul>
-       })}
-        </div>
-    </div>
+  return notes.length<1 ?  <h1>No notes are avilable</h1> :  (
+    <div className="flex h-screen w-screen items-center justify-center bg-black">
+    <div className="min-h-[85%] w-[100%] bg-white p-1 sm:p-6 sm:w-[85%] mt-4 p-1 ">
+      
+   { !isSubmitting? (notes.map((e)=>{
+         
+        return  <ul className="rounded p-2 " key={e._id}>
+            <li className="flex justify-between items-center border-blue-200 rounded border-2 p-1">
+              <h1 className="font-bold font-serif">{e.notesName}</h1>
+              <h1 className="font-bold font-serif">{e.depertmentname.depertmentName}</h1>
+              <h1 className="font-bold font-serif">{e.subjectname.name}</h1>
+              <div className="flex gap-2">
+                <a href={e.imageUrl}><button className="rounded px-2 bg-yellow-400 p-1 text-black font-semibold">View</button></a>
+                <button className="rounded px-2 bg-green-400 p-1 text-black font-semibold" disabled={isSubmitting} onClick={()=>{verify(e._id)}}><h1>Approve</h1></button>
+                <button className="rounded px-2 bg-red-400 p-1 text-black font-semibold" disabled={isSubmitting} onClick={()=>{reject(e._id)}} ><h1>Reject</h1></button>
+              </div>
+            </li>
+          </ul>
+       
+    })):<LucideLoaderCircle className=" animate-spin w-full h-full"></LucideLoaderCircle>}
+     </div>
+      </div>
+  
+  
   )
 }
 

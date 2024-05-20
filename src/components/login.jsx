@@ -25,7 +25,11 @@ const Login = () => {
           navigate('/login')
         }
     } catch (error) {
-        setloginMessage(error.response.data.message)
+        if (error.response.data.message) {
+          setloginMessage(error.response.data.message)
+        }else{
+          setloginMessage("login failed");
+        }
         
     }finally{
         setisSubmitting(false)
