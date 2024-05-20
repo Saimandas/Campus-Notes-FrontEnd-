@@ -54,7 +54,7 @@ const Register = () => {
 
     } catch (error) {
       console.log(error);
-      setsignUpMessage(error.response.data.error)
+      setsignUpMessage(error.response.data.message)
     }finally{
       setisSubmitting(false)
     }

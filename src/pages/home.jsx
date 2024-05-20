@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {  LoaderPinwheelIcon } from "lucide-react";
 import { userLogin, userlogout } from "@/redux/authSlice";
+import loginImage from '../components/image/log-in.png'
 
 // Author details
 const author = {
@@ -17,9 +18,14 @@ const Home = () => {
   const navigate= useNavigate()
   const dispatch = useDispatch()
   const [isLoggedin, setisLoggedin] = useState(false)
+  const [isAdmin, setisAdmin] = useState(false)
+  const userData= useSelector((state)=>{return state.auth.userData})
+  
+ useEffect(()=>{
   async function getCurrentUser(){
     try {
       const response = await axios.get('/users/getCurrentUser');
+      console.log(response.data);
       if (response.data.message==="user get succcesfully"){
          dispatch(userLogin(response.data.user))
       }
@@ -27,14 +33,23 @@ const Home = () => {
       console.log(error);
     }
   }
+ if (!userData) {
   getCurrentUser()
+ }
+ },[dispatch,userData])
 
-   const status= useSelector((state)=>{return state.auth.status})
- 
-   useEffect(()=>{
-    setisLoggedin(status)
-   },[status])
-   console.log(status);
+
+useEffect(()=>{
+  if (userData) {
+    setisLoggedin(true)
+  }else{
+    setisLoggedin(false)
+  }
+},[userData])
+   console.log(userData);
+   
+   console.log(isAdmin);
+   
   const [isSubmitting, setisSubmitting] = useState(false)
    const logout= async()=>{
     try {
@@ -42,9 +57,11 @@ const Home = () => {
      if (result) {
       setisSubmitting(true)
       const response= await axios.post('/users/logout');
+      setisLoggedin(false)
+      console.log(response);
       if (response) {
         alert("user succesfully logout")
-        setisLoggedin(false);
+
         setisSubmitting(false);
         dispatch(userlogout())
         navigate("/") 
@@ -61,9 +78,11 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-sky-500 to-indigo-500">
       <div className='fixed top-2 right-2 h-8 w-8'></div>
+      <div className=" fixed right-8 top-10 sm:right-28"><button><Link to={'/forAdmin'}><img src={loginImage} width={'40px'} /></Link></button></div>
       <div className="relative flex items-center justify-center h-72 w-72 bg-green-500 rounded-full overflow-hidden ">
         <img src={img} alt="" className='w-full h-full  ' />
       </div>
+      
       <div className="flex justify-center mt-8 w-full">
         <div className="grid grid-cols-2 gap-5">
           <Link to={"/viewNotes"}><button className="w-36 h-16 bg-orange-500 shadow-xl rounded"><h1 className="text-white font-mono font-bold">View Notes</h1></button></Link>
@@ -75,8 +94,9 @@ const Home = () => {
           }
          
         </div>
+        
       </div>
-      <footer className="mt-8  sm:mt-14 text-center text-white pb-8">
+      <footer className="mt-[7rem]  sm:mt-14 text-center text-white pb-8">
         <p>Saiman Das | Contact: 9954261623</p>
         <div className="mt-4">
           <img src={author.imageUrl} alt={author.name} className="w-16 h-16 rounded-full mx-auto mb-2" />

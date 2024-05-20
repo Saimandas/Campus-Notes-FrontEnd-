@@ -21,9 +21,11 @@ const Login = () => {
         if (response.data.message==="user succesfyly logged in") {
           dispatch(userLogin(response.data.user))
           navigate('/')
+        }else{
+          navigate('/login')
         }
     } catch (error) {
-        setloginMessage("failed to login")
+        setloginMessage(error.response.data.message)
         
     }finally{
         setisSubmitting(false)
@@ -66,7 +68,7 @@ const Login = () => {
                   }
                   <button disabled={isSubmitting} className="w-full bg-blue-700 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" onClick={login}>Sign In</button>
                   {
-                    loginMessage && <p className="text-gray-500 dark:text-gray-300">{loginMessage}</p>
+                    loginMessage && <p className="text-red-600 font-semibold">{loginMessage}</p>
                   }
                   
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
