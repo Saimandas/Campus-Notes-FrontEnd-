@@ -7,6 +7,7 @@ const ViewNotes = () => {
    
 
     const [notes, setnotes] = useState([])
+    console.log(notes);
 
     useEffect(()=>{
         async function get(){
