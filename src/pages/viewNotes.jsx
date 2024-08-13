@@ -26,7 +26,7 @@ const ViewNotes = () => {
         <li><div className="mt-10 h-10  shadow-lg flex justify-around ">
             <div className=" mr-9 w-[40%] pl-16 py-2">{e.notesName}</div>
             <div className=" py-1 flex w-[60%]  pl-[30%]  justify-around items-center ">
-            <a href={e.imageUrl}><button className=" bg-yellow-400 w-14 shadow-md  active:scale-50">view</button></a>
+           
             </div></div></li>
     </ul>
        })}

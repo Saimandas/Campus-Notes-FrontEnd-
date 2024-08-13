@@ -76,7 +76,7 @@ useEffect(()=>{
     return <LoaderPinwheelIcon className=" w-full h-full animate-spin"></LoaderPinwheelIcon>
    }else{
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-sky-500 to-indigo-500">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-sky-500 to-indigo-500 py-10">
       <div className='fixed top-2 right-2 h-8 w-8'></div>
       <div className=" fixed right-8 top-10 sm:right-28"><button><Link to={'/forAdmin'}><img src={loginImage} width={'40px'} /></Link></button></div>
       <div className="relative flex items-center justify-center h-72 w-72 bg-green-500 rounded-full overflow-hidden ">
@@ -90,7 +90,9 @@ useEffect(()=>{
           <Link to={'/register'}><button className="w-36 h-16 bg-orange-500 shadow-xl rounded text-white font-mono font-bold">Register</button></Link>
           {
             isLoggedin ? <Link to='#'><button className="w-36 h-16 bg-orange-500 shadow-xl rounded text-white font-mono font-bold" onClick={logout}>LogOut</button></Link>:
-            <Link to='/login'><button className="w-36 h-16 bg-orange-500 shadow-xl rounded text-white font-mono font-bold">Login</button></Link>
+            <Link to='/login'><button className="w-36 h-16 bg-orange-500 shadow-xl rounded text-white font-mono font-bold flex items-center gap-2 ">
+              <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="M481-120v-60h299v-600H481v-60h299q24 0 42 18t18 42v600q0 24-18 42t-42 18H481Zm-55-185-43-43 102-102H120v-60h363L381-612l43-43 176 176-174 174Z"/></svg>
+              Login</button></Link>
           }
          
         </div>
