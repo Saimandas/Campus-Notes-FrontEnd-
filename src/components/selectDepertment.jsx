@@ -13,7 +13,19 @@ const SelectDepertment = () => {
     depertmentRef.current =depertment;
     setisSubmit(true); 
   };
+   
+  const obj={
+    BA:[""],
+    BSC:[""],
+    BCA:["Maths", "Fundamentels","DSA"]
+  }
 
+  const slct= function(stream){
+           const sub= obj[stream];
+           return sub;
+  }
+
+  const sub= slct(depertment);
   if (!isSubmit) {
     return (
       <div className="flex h-screen items-center justify-center bg-black p-20 px-12">
@@ -28,11 +40,17 @@ const SelectDepertment = () => {
           </select>
     
           <label className="mt-12 text-xl font-semibold text-white">Subject:</label>
-          <select name="" id="" className="mt-5 h-12  font-semibold text-white  w-44 rounded-md bg-blue-600 outline-none sm:w-[40%] sm:h-14"  value={depertment} onChange={(e)=>{setdepertment(e.target.value)}}>
-            <option value="">DSA</option>
-            <option value="">Maths</option>
-            <option value="Fundamentels">Fundamentels</option>
+          <select name="" id="" className="mt-5 h-12  font-semibold text-white  w-44 rounded-md bg-blue-600 outline-none sm:w-[40%] sm:h-14"  value={subject} onChange={(e)=>{setsubject(e.target.value)}}>
+           {
+            sub.map((e)=>{
+             
+            return  <option key={e} value={e}>{e}</option>
+            })
+           }
           </select>
+          {
+            console.log(subject)
+          }
           <label className="mt-12 text-xl font-semibold text-white">Semister:</label>
           <select name="" id="" className="mt-5 h-12 w-44 rounded-md bg-blue-600  font-semibold text-white  outline-none sm:w-[40%] sm:h-14">
             <option value="">1</option>
