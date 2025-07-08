@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   server: {
     proxy: {
-      "/users": "https://campusnotes-backend-production.up.railway.app/api/v1"
+      "/users": "https://campusnotes-backend-production.up.railway.app/api/v1/users/"
     },
     host: '0.0.0.0',
     port: 3000
