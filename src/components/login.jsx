@@ -16,7 +16,9 @@ const Login = () => {
    e.preventDefault()
     try {
         setisSubmitting(true)
-        const response= await axios.post("/users/login",{email,password})
+        const response= await axios.post("https://campusnotes-backend-production.up.railway.app/api/v1/login",{email,password})
+        console.log(response);
+        
         setloginMessage(response.data.message)
         if (response.data.message==="user succesfyly logged in") {
           dispatch(userLogin(response.data.user))
