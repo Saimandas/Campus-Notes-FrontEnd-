@@ -29,6 +29,10 @@ const Login = () => {
           setloginMessage(error.response.data.message)
         }else{
           setloginMessage("login failed");
+          console.log(error.message);
+          console.log(error);
+          
+          
         }
         
     }finally{
