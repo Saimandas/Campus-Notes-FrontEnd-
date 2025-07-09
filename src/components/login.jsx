@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { userLogin} from "@/redux/authSlice"
 import { Link, useNavigate } from "react-router-dom"
 import { Loader2 } from "lucide-react"
+import { api } from "@/lib/utils"
 
 const Login = () => {
   const [email, setemail] = useState("")
@@ -16,7 +17,7 @@ const Login = () => {
    e.preventDefault()
     try {
         setisSubmitting(true)
-        const response= await axios.post("/users/login",{email,password})
+        const response= await api.post("/users/login",{email,password});
         console.log(response);
         
         setloginMessage(response.data.message)

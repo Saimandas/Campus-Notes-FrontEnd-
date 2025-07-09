@@ -6,6 +6,7 @@ import axios from "axios";
 import {  LoaderPinwheelIcon } from "lucide-react";
 import { userLogin, userlogout } from "@/redux/authSlice";
 import loginImage from '../components/image/log-in.png'
+import { api } from "@/lib/utils";
 
 // Author details
 const author = {
@@ -24,7 +25,7 @@ const Home = () => {
  useEffect(()=>{
   async function getCurrentUser(){
     try {
-      const response = await axios.get('/users/getCurrentUser');
+      const response = await api.get('/users/getCurrentUser');
       console.log(response.data);
       if (response.data.message==="user get succcesfully"){
          dispatch(userLogin(response.data.user))

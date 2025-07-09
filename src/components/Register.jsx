@@ -30,7 +30,7 @@ const Register = () => {
       if (username) {
         setisCheckingUsername(true)
         try {
-          const response= await axios.get(`users/checkUsername/${username}`)
+          const response= await axios.get(`/users/checkUsername/${username}`)
           setuserameMessage(response.data.message)
         } catch (error) {
           setuserameMessage(error.response.data.message)
