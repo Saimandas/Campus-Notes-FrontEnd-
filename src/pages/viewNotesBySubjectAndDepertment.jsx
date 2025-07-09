@@ -5,8 +5,7 @@ import { forwardRef, useEffect, useState } from "react"
 
 const ViewNotesBySubjectAndDepertment = (props,ref) => {
      const{depertmentRef,subjectRef}=ref
-
-     const [notes, setnotes] = useState([])
+     const [notes, setnotes] = useState([{}])
      const [isGetting, setisGetting] = useState(false)
      console.log(notes);
     useEffect(()=>{
@@ -25,7 +24,7 @@ const ViewNotesBySubjectAndDepertment = (props,ref) => {
 
          submit()
     },[])
-    return notes.length>=1?(
+    return notes?.length>=1?(
     <>
       { 
         isGetting ? <Loader2 className=" animate-spin"></Loader2>:
